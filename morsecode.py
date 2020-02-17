@@ -15,7 +15,7 @@ MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
    '(':'-.--.', ')':'-.--.-'
 }
 
-MORSE_CODE_DICT_REV = {v: k for k, v in MORSE_CODE_DICT.items()}
+MORSE_CODE_DICT_REV = {v: k for k, v in MORSE_CODE_DICT.items()} #This dictionary maps in reverse, and makes sure a check citext contains at least one character
 def letters_To_Morsecode(message):
     cipher =''
     for letter in message:

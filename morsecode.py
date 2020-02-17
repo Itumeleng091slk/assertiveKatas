@@ -38,7 +38,7 @@ def morseCode_To_Letters(message):
             space += 1  # indicates a new character
             if space == 2 :  # indicates a new word
                 decipher += ' '
-            elif citext != '':
+            elif citext != '': # accessing the keys using their values (reverse of letters_To_Morsecode)
                 decipher += MORSE_CODE_DICT_REV[citext]
                 citext = ''
     return decipher

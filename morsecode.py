@@ -23,6 +23,7 @@ def letters_To_Morsecode(message):
             cipher += MORSE_CODE_DICT[letter] + ' '
         else:
             cipher +=''
+    assert 0 != letter != message
     return cipher
 
 def morseCode_To_Letters(message):

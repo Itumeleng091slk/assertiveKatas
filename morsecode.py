@@ -31,14 +31,14 @@ def morseCode_To_Letters(message):
     message += ' '
     decipher = ''
     citext = ''
-    space = 0
+    words = 0
     for letter in message:
         if (letter != ' '): # checks for space
-            space = 0 # counter to keep track of space
+            words = 0 # counter to keep track of space
             citext += letter # storing morse code of a single character
         else:  # in case space is not visible/performed 
-            space += 1  # indicates a new character
-            if space == 2 :  # indicates a new word
+            words += 1  # indicates a new character
+            if words == 2 :  # indicates a new word
                 decipher += ' '
             elif citext != '': # accessing the keys using their values (reverse of letters_To_Morsecode)
                 decipher += MORSE_CODE_DICT_REV[citext]

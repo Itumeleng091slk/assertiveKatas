@@ -43,7 +43,7 @@ def morseCode_To_Letters(message):
             elif citext != '': # accessing the keys using their values (reverse of letters_To_Morsecode)
                 decipher += MORSE_CODE_DICT_REV[citext]
                 citext = ''
-    assert words != 0 , ("doesn't have the right number of spaces represented in the output")
+    assert words != 0 , ("doesn't have the right number of spaces represented in the output") # if you make word <= 0 the assertion error will occur
     return decipher
 
 

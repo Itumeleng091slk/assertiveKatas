@@ -48,16 +48,17 @@ def morseCode_To_Letters(message):
 
 
 def main():
-    message = ("Hi-There")
-    result = letters_To_Morsecode(message.upper())
-    assert len(message) != 0 , "Does not have the same number of characters in the input & output"
+    message1 = ("Hi-There")
+    result = letters_To_Morsecode(message1.upper())
+    #assert len(message1) != 0 , "Does not have the same number of characters in the input & output"
     print(result)
-    print(len(message))
+    print(len(message1))
 
 
-    message = ".... .. -....- - .... . .-. ."
-    result = morseCode_To_Letters(message)
-    msg_length = list(message.split(' '))
+    message2 = ".... .. -....- - .... . .-. ."
+    result = morseCode_To_Letters(message2)
+    msg_length = list(message2.split(' '))
+    assert len(message1) != message2 , "Does not have the same number of characters in the input & output"
     print(result)
     print(len(msg_length))
 

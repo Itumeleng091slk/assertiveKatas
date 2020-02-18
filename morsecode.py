@@ -43,7 +43,7 @@ def morseCode_To_Letters(message):
             elif citext != '': # accessing the keys using their values (reverse of letters_To_Morsecode)
                 decipher += MORSE_CODE_DICT_REV[citext]
                 citext = ''
-    assert words <= 0 , ("the right number of spaces represented in the output")
+    assert words != 0 , ("the right number of spaces represented in the output")
     return decipher
 
 
@@ -55,7 +55,9 @@ def main():
 
     message = ".... .. -....- - .... . .-. ."
     result = morseCode_To_Letters(message)
+    msg_length = list(message.split(' '))
     print(result)
+    print(len(msg_length))
 
 if __name__ == '__main__':
     main()

@@ -52,6 +52,8 @@ def main():
     result = letters_To_Morsecode(message.upper())
     assert len(message) != 0 , "Does not have the same number of characters in the input & output"
     print(result)
+    print(len(message))
+
 
     message = ".... .. -....- - .... . .-. ."
     result = morseCode_To_Letters(message)

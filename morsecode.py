@@ -55,10 +55,10 @@ def main():
     print(len(message1))
 
 
-    message2 = ".... .. -....- - .... . .-. ."
+    message2 = ".... .. -....- - .... . .-. ." # if you add another morsecode to this message the assertion will not run because it is true.
     result = morseCode_To_Letters(message2)
     msg_length = list(message2.split(' '))
-    assert len(message1) != message2 , "Does not have the same number of characters in the input & output"
+    assert len(message1) != message2 , "Does not have the same number of characters in the input & output" "Does not have the same number of characters in the input & output" # if you make message1 == message2 and if either one was updated with one character the assertion error will occur.
     print(result)
     print(len(msg_length))
 

@@ -24,7 +24,7 @@ def letters_To_Morsecode(message):
         else:
             cipher +=''
     #assert letter != message, ("the output and input both have the same number of characters represented")
-    assert words != 0 , ("Does not have the right number of spaces represented in the output")
+    #assert words != 0 , ("Does not have the right number of spaces represented in the output")
     return cipher
 
 def morseCode_To_Letters(message):
@@ -43,7 +43,7 @@ def morseCode_To_Letters(message):
             elif citext != '': # accessing the keys using their values (reverse of letters_To_Morsecode)
                 decipher += MORSE_CODE_DICT_REV[citext]
                 citext = ''
-    #assert letter != message, ("the right number of spaces represented in the output")
+    assert words <= 0 , ("the right number of spaces represented in the output")
     return decipher
 
 

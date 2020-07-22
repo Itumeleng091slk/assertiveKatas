@@ -54,14 +54,14 @@ inverse_morse_dict = dict((v, k) for (k, v) in morse_dict.items())
 
 test_code = ".... . .-.. .-.. --- / -.. .- .. .-.. -.-- / .--. .-. --- --. .-. .- -- -- . .-. / --. --- --- -.. / .-.. ..- -.-. -.- / --- -. / - .... . / -.-. .... .- .-.. .-.. . -. --. . ... / - --- -.. .- -.--"
 
-def decode_morse(message):
+def decode_to_morse(message):
     message_separated = message.split(' ')
     decode_message = ''
     for char in message_separated:
         if char in inverse_morse_dict:
             decode_message  += inverse_morse_dict[char]
         else:
-            decode_message  += '<CF>' # CF = Character found
+            decode_message  += 'Character found' 
     return decode_message 
 
 
@@ -71,7 +71,7 @@ def encode_to_morse(message):
         if char.upper() in morse_dict:
             encoded_message  += morse_dict[char.upper()] + " "
         else:
-           encoded_message += '<CF>'
+           encoded_message += 'Character found'
     return encoded_message 
 
 def main():

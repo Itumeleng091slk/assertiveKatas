@@ -61,7 +61,7 @@ def decode_to_morse(message):
         if char in inverse_morse_dict:
             decode_message  += inverse_morse_dict[char]
         else:
-            decode_message  += 'Character found' 
+            decode_message  += '<CF>' # CF = Character found
     return decode_message 
 
 
@@ -71,19 +71,20 @@ def encode_to_morse(message):
         if char.upper() in morse_dict:
             encoded_message  += morse_dict[char.upper()] + " "
         else:
-           encoded_message += 'Character found'
+           encoded_message += '<CF>'
     return encoded_message 
 
 def main():
     message1 = "Hi-There"
-    result = decode_morse(message1.upper())
-    print(result)
+    decoding = decode_to_morse(message1.upper())
+    print(decoding)
     print(len(message1))
 
 
     message2 = ".... .. -....- - .... . .-. ." 
     msg_length = list(message2.split(' '))
-    print(result)
+    encoding = encode_to_morse(message2)
+    print(encoding)
     print(len(msg_length))
 
 if __name__ == '__main__':

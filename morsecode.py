@@ -26,7 +26,7 @@ def letters_to_morsecode(message):
 def count_characters_in_morsecode(message):
     count = 0
     for char in message: 
-        if (char.isspace()) == False: 
+        if (char.isspace()) == True: 
             count+=1
     return count
 
@@ -52,7 +52,7 @@ def main():
     decoding = letters_to_morsecode(message)
     count_space = count_characters_in_morsecode(message)
 
-    assert count_space != False, "right number of spaces represented in the output"
+    assert count_space != True, "right number of spaces represented in the output"
     assert len(message) != morsecode_to_letters, "output and input both have the same number of characters represented"
     
     print(f'morse coded message:{decoding}\nOriginal message/Letter: {message}')

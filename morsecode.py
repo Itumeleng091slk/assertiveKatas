@@ -1,7 +1,4 @@
-import sys
-import string
-
-morse_dict = {
+MORSE_DICT = {
     "A": ".-",
     "B": "-...",
     "C": "-.-.",
@@ -48,44 +45,57 @@ morse_dict = {
     "/": "-..-.",
     "@": ".--.-.",
     "=": "-...-"
-}
+} 
 
-inverse_morse_dict = dict((v, k) for (k, v) in morse_dict.items())
 
-test_code = ".... . .-.. .-.. --- / -.. .- .. .-.. -.-- / .--. .-. --- --. .-. .- -- -- . .-. / --. --- --- -.. / .-.. ..- -.-. -.- / --- -. / - .... . / -.-. .... .- .-.. .-.. . -. --. . ... / - --- -.. .- -.--"
-
-def decode_to_morse(message):
-    message_separated = message.split(' ')
-    decode_message = ''
-    for char in message_separated:
-        if char in inverse_morse_dict:
-            decode_message  += inverse_morse_dict[char]
+def letters_to_morsecode(message):
+    decoding_message = ''
+    for char in message:
+        if char != ' ':
+            decoding_message += MORSE_DICT[char] + ' '
         else:
-            decode_message  += 'Character found' 
-    return decode_message 
+            decoding_message += ' '  
+    return decoding_message
 
+def count_characters_in_morsecode(message):
+    count = 0
+    for char in morsecode_to_letters: 
+        if (char.isspace()) == True: 
+            count+=1
+    return count 
 
-def encode_to_morse(message):
-    encoded_message = ""
-    for char in message[:]:
-        if char.upper() in morse_dict:
-            encoded_message  += morse_dict[char.upper()] + " "
-        else:
-           encoded_message += 'Character found'
-    return encoded_message 
-
+def morsecode_to_letters(message):
+    message += ' '
+    decoded_message = '' 
+    encoded_message = '' 
+    for char in message:
+        if (char != ' '):
+            count = 0
+            encoded_message += char 
+        else: 
+            count += 1 
+            if count == 2 : 
+                decoded_message += ' '
+            else:  
+                decoded_message += list(MORSE_DICT.keys())[list(MORSE_DICT .values()).index(encoded_message)] 
+                encoded_message = ''            
+    return decoded_message  
+    
 def main():
-    message1 = "Hi-There"
-    decoding = decode_to_morse(message1.upper())
-    print(decoding)
-    print(len(message1))
-
-
-    message2 = ".... .. -....- - .... . .-. ." 
-    msg_length = list(message2.split(' '))
-    encoding = encode_to_morse(message2)
-    print(encoding)
-    print(len(msg_length))
-
-if __name__ == '__main__':
+    
+    message = "Hi There"
+    expected_output = ".... ..  - .... . .-. ."
+    decoding = letters_to_morsecode(message.upper())
+    assert len(message) != morsecode_to_letters, "output and input both have the same number of characters represented"
+    print(f'decoded message:{decoding}')
+    print(len(message))
+    
+    message = ".... ..  - .... . .-. ."
+    msg_len = list(message.split(' '))
+    encoding = morsecode_to_letters(message)
+    assert len(message) != count_characters_in_morsecode, "right number of spaces represented in the output"
+    print(f'encoded Message : {encoding}')
+    print(len(msg_len))
+    
+if __name__ == "__main__":
     main()

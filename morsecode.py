@@ -55,8 +55,8 @@ def main():
     assert count_space != True, "right number of spaces represented in the output"
     assert len(message) != morsecode_to_letters, "output and input both have the same number of characters represented"
     
-    print(f'morse coded message:{decoding}\nOriginal message/Letter: {message}')
-    print(len(message))
+    print(f'Morse coded message:{decoding}\nOriginal message/Letter: {message}')
+    print(f'The length of the message: {len(message)}')
     
  
     

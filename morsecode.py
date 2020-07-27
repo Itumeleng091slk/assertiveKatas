@@ -33,8 +33,8 @@ def morsecode_to_letters(morse_code:str):
 
 def main():
 
-    print(letters_to_morsecode('HELLO'))
-    print(morsecode_to_letters('.... . .-.. .-.. ---'))
+    print(morsecode_to_letters('.... .. -  .... . .-. . '))
+    print(letters_to_morsecode('HITHERE'))
     
     morse_code = input('enter your morse code: ').upper()
     message = input('enter your message/letter: ').upper()
@@ -42,8 +42,8 @@ def main():
     encoding = morsecode_to_letters(morse_code)
     count_space = count_characters_in_morsecode(message)
     
-    assert count_space == False, "right number of spaces represented in the output"
-    assert len(message) != morsecode_to_letters, "output and input both have the same number of characters represented"
+    assert count_space == FALSE, "right number of spaces represented in the output"
+    assert len(message) == morsecode_to_letters, "output and input both have the same number of characters represented"
     
     print(f'Original message/Letter:{encoding}\nMorse coded message: {morse_code}')
     print(f'The length of the message: {len(message)}')

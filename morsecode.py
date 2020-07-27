@@ -1,63 +1,54 @@
-morse_dict = { 'A':'.-', 'B':'-...', 
-				'C':'-.-.', 'D':'-..', 'E':'.', 
-				'F':'..-.', 'G':'--.', 'H':'....', 
-				'I':'..', 'J':'.---', 'K':'-.-', 
-				'L':'.-..', 'M':'--', 'N':'-.', 
-				'O':'---', 'P':'.--.', 'Q':'--.-', 
-				'R':'.-.', 'S':'...', 'T':'-', 
-				'U':'..-', 'V':'...-', 'W':'.--', 
-				'X':'-..-', 'Y':'-.--', 'Z':'--..', 
-				'1':'.----', '2':'..---', '3':'...--', 
-				'4':'....-', '5':'.....', '6':'-....', 
-				'7':'--...', '8':'---..', '9':'----.', 
-				'0':'-----', ', ':'--..--', '.':'.-.-.-', 
-				'?':'..--..', '/':'-..-.', '-':'-....-', 
-				'(':'-.--.', ')':'-.--.-'}  
+MORSE_DICT = {'A': '.-',     'B': '-...',   'C': '-.-.', 
+        'D': '-..',    'E': '.',      'F': '..-.',
+        'G': '--.',    'H': '....',   'I': '..',
+        'J': '.---',   'K': '-.-',    'L': '.-..',
+        'M': '--',     'N': '-.',     'O': '---',
+        'P': '.--.',   'Q': '--.-',   'R': '.-.',
+        'S': '...',    'T': '-',      'U': '..-',
+        'V': '...-',   'W': '.--',    'X': '-..-',
+        'Y': '-.--',   'Z': '--..',
+
+        '0': '-----',  '1': '.----',  '2': '..---',
+        '3': '...--',  '4': '....-',  '5': '.....',
+        '6': '-....',  '7': '--...',  '8': '---..',
+        '9': '----.' 
+        }
+
+MORSE_DICT_REVERSED = {value:key for key,value in MORSE_DICT.items()}
 
 def letters_to_morsecode(message):
-    decoding_message = ' '
-    for char in message:
-        if char != ' ':
-            decoding_message += morse_dict[char] + ' '
-        else:
-            decoding_message += ' '  
-    return decoding_message
+    decoding_message = ' ' 
+    return ' '.join(MORSE_DICT.get(char.upper()) for char in message)
 
 def count_characters_in_morsecode(message):
     count = 0
     for char in message: 
         if (char.isspace()) == True: 
-            count+=1
+            count +=1 
     return count
 
-def morsecode_to_letters(message):
-    message += ' '
-    decoded_message = '' 
-    encoded_message = '' 
-    for char in message:
-        if (char != ' '):
-            count = 0
-            encoded_message += char 
-        else: 
-            count += 1 
-            if count == 2 : 
-                decoded_message += ' '
-            else:  
-                decoded_message += list(morse_dict.keys())[list(morse_dict.values()).index(encoded_message)] 
-                encoded_message = ''            
-    return decoded_message 
+def morsecode_to_letters(morse_code:str):
+    morse_code += ' ' 
+    return ''.join(MORSE_DICT_REVERSED.get(char) for char in morse_code.split())
 
 def main():
+
+    print(letters_to_morsecode('HELLO'))
+    print(morsecode_to_letters('.... . .-.. .-.. ---'))
+    
+    morse_code = input('enter your morse code: ').upper()
     message = input('enter your message/letter: ').upper()
     decoding = letters_to_morsecode(message)
+    encoding = morsecode_to_letters(morse_code)
     count_space = count_characters_in_morsecode(message)
-
-    assert count_space == True, "right number of spaces represented in the output"
+    
+    assert count_space == False, "right number of spaces represented in the output"
     assert len(message) != morsecode_to_letters, "output and input both have the same number of characters represented"
     
-    print(f'Morse coded message:{decoding}\nOriginal message/Letter: {message}')
+    print(f'Original message/Letter:{encoding}\nMorse coded message: {morse_code}')
     print(f'The length of the message: {len(message)}')
     print(f'The number of spaces in your output:{count_space}')
+    print(f'Morse coded message:{decoding}\nOriginal message/Letter: {message}')
     
  
     

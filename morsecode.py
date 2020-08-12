@@ -14,11 +14,14 @@ MORSE_DICT = {'A': '.-',     'B': '-...',   'C': '-.-.',
         '9': '----.' 
         }
 
-MORSE_DICT_REVERSED = {value:key for key,value in MORSE_DICT.items()}
-
 def letters_to_morsecode(message):
-    decoding_message = ' ' 
-    return ' '.join(MORSE_DICT.get(char.upper()) for char in message)
+    decoding_message = ''
+    for char in message:
+        if char != ' ':
+            decoding_message += MORSE_DICT[char] + ' '
+        else:
+            decoding_message += ' '
+    return decoding_message
 
 def count_characters_in_morsecode(message):
     count = 0
@@ -28,29 +31,49 @@ def count_characters_in_morsecode(message):
     return count
 
 def morsecode_to_letters(morse_code:str):
-    morse_code += ' ' 
-    return ''.join(MORSE_DICT_REVERSED.get(char) for char in morse_code.split())
+    morse_code += ' '
+    decode = ''
+    encode = ''
+    for char in morse_code:
+        if char != ' ':
+            count = 0
+            encode += char
+        else:
+            count += 1
+            if count == 2:
+                decode += ' '
+            else:
+                decode += list(MORSE_DICT.keys())[
+                    list(MORSE_DICT.values()).index(encode)
+                    ]
+                encode = ''
+    return decode
+
 
 def main():
+    morse_code = '.... ..  - .... . .-. .'
+    decode = morsecode_to_letters(morse_code)
+    count_space = count_characters_in_morsecode(morse_code)
+    count_space = decode.count(' ')
+    print("Encryption:")
+    print(f"encoded Message : {decode}")
+    print(f"Length of decoded message : {len(decode)}")
+    print(f"Number of spaces in the input message: {count_space}")
 
-    print(morsecode_to_letters('.... .. -  .... . .-. . '))
-    print(letters_to_morsecode('HITHERE'))
-    
-    morse_code = input('enter your morse code: ').upper()
-    message = input('enter your message/letter: ').upper()
-    decoding = letters_to_morsecode(message)
-    encoding = morsecode_to_letters(morse_code)
-    count_space = count_characters_in_morsecode(message)
-    
-    assert count_space == FALSE, "right number of spaces represented in the output"
-    assert len(message) == morsecode_to_letters, "output and input both have the same number of characters represented"
-    
-    print(f'Original message/Letter:{encoding}\nMorse coded message: {morse_code}')
-    print(f'The length of the message: {len(message)}')
-    print(f'The number of spaces in your output:{count_space}')
-    print(f'Morse coded message:{decoding}\nOriginal message/Letter: {message}')
-    
+
+    message = 'Hi There'.upper()
+    encode = letters_to_morsecode(message)
+    count_space = message.count(' ')
+    print('Decryption:')
+    print(f'Input Message Length : {len(message)}')
+    print(f'Number of spaces in the encoded message: {count_space}')
+    print(f'Encoded Message : {encode}')
+
  
+    assert len(encode) != 0, "You cannot not encrypt an empty message"
+    assert len(decode) != 0, "You cannot not decrypt an empty message"
+    assert count_space == 1, "encryption and decryption must have same number of spaces in the output"
+
     
 if __name__ == "__main__":
     main()

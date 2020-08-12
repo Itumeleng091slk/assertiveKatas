@@ -61,7 +61,7 @@ def main():
     print(f"Number of spaces in the input message: {count_space}")
 
 
-    message = 'Hi There'.upper()
+    message = 'HI THERE'.upper()
     encode = letters_to_morsecode(message)
     count_space = message.count(' ')
     print('Decryption:')
